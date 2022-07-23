@@ -1,6 +1,8 @@
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.awt.Color;
 import java.awt.Font;
 
@@ -10,7 +12,8 @@ public class StickersCreator {
     public void cria() throws Exception{
 
         // Leitura da imagem 
-        BufferedImage imagemOriginal = ImageIO.read(new File("entrada/filme.jpg"));
+        InputStream inputStream = new FileInputStream(new File("entrada/filme.jpg"));
+        BufferedImage imagemOriginal = ImageIO.read(inputStream);
 
         // Criar nova imagem com transparencia e com o tamanho novo
         int largura = imagemOriginal.getWidth();
@@ -36,9 +39,9 @@ public class StickersCreator {
     }
 
     public static void main(String[] args) throws Exception {
+        
         var geradora = new StickersCreator();
         geradora.cria(); 
         
-    
     }
 }
